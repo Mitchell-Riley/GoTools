@@ -37,23 +37,16 @@ class GotoolsOracleCommand(sublime_plugin.TextCommand):
 
     sublime.active_window().run_command("hide_panel", {"panel": "output.gotools_oracle"})
 
-    if command == "callees":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("callees", pos, package_scope), 0)
-    if command == "callers":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("callers", pos, package_scope), 0)
-    if command == "callstack":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("callstack", pos, package_scope), 0)
-    if command == "describe":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("describe", pos, package_scope), 0)
+    possible_commands = ["callees", "callers", "callstack", "definition",
+      "describe", "freevars", "implements", "peers", "referrers", "what"]
+    if command not in possible_commands:
+      self.logger.status("unrecognized oracle command")
+      return
+
     if command == "freevars":
       pos = filename+":#"+str(offset)+","+"#"+str(offset_end)
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("freevars", pos, package_scope), 0)
-    if command == "implements":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("implements", pos), 0)
-    if command == "peers":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("peers", pos, package_scope), 0)
-    if command == "referrers":
-      sublime.set_timeout_async(lambda: self.do_plain_oracle("referrers", pos, package_scope), 0)
+    
+    sublime.set_timeout_async(lambda: self.do_plain_oracle(command, pos, package_scope), 0)
 
   def do_plain_oracle(self, mode, pos, package_scope=[], regex="^(.*):(\d+):(\d+):(.*)$"):
     self.logger.status("running oracle "+mode+"...")

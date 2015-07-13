@@ -8,13 +8,6 @@
     "command": "gotools_format"
   },
   {
-    "caption": "GoTools: Oracle: Callers",
-    "command": "gotools_oracle",
-    "args": {
-      "command": "callers"
-    }
-  },
-  {
     "caption": "GoTools: Oracle: Callees",
     "command": "gotools_oracle",
     "args": {
@@ -22,10 +15,24 @@
     }
   },
   {
+    "caption": "GoTools: Oracle: Callers",
+    "command": "gotools_oracle",
+    "args": {
+      "command": "callers"
+    }
+  },
+  {
     "caption": "GoTools: Oracle: Callstack",
     "command": "gotools_oracle",
     "args": {
       "command": "callstack"
+    }
+  },
+  {
+    "caption": "GoTools: Oracle: Definition",
+    "command": "gotools_oracle",
+    "args": {
+      "command": "definition"
     }
   },
   {
@@ -61,6 +68,13 @@
     "command": "gotools_oracle",
     "args": {
       "command": "referrers"
+    }
+  },
+  {
+    "caption": "GoTools: Oracle: What",
+    "command": "gotools_oracle",
+    "args": {
+      "command": "what"
     }
   }
 ]
